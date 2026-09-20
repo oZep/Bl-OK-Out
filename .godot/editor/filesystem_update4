@@ -1,0 +1,6 @@
+res://scenes/MainMenu.tscn
+res://scripts/MainMenu.gd
+res://autoloads/NetworkManager.gd
+res://autoloads/GameState.gd
+res://scripts/player.gd
+res://scripts/Player.gd
