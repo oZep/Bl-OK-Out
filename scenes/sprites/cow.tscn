@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bbvvb6ccsnea5"]
+
+[ext_resource type="Texture2D" uid="uid://bj64yxheaabll" path="res://assets/cow-on-transparent-background-png.webp" id="1_jh441"]
+
+[node name="Cow" type="Node3D" unique_id=2078738616]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1687949734]
+pixel_size = 0.0013
+billboard = 1
+texture = ExtResource("1_jh441")

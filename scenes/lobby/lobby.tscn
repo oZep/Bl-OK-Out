@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://dx4y5fqwj1u30"]
+
+[ext_resource type="Script" uid="uid://b4cbqu3mlh15u" path="res://scenes/lobby/lobby.gd" id="1_1ig7j"]
+[ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://scenes/player_character/player_character_scene.tscn" id="2_jekxk"]
+[ext_resource type="PackedScene" uid="uid://debd8dnm3d5ik" path="res://scenes/lobby/main_menu_ui.tscn" id="2_ukx7c"]
+[ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://common/themes/main_theme/main_theme.tres" id="11_sekq8"]
+[ext_resource type="PackedScene" uid="uid://da2jeeyxxp2s2" path="res://scenes/ui/steam_friends_list/steam_friends_list.tscn" id="12_a0ps3"]
+[ext_resource type="FontFile" uid="uid://cfsikuv13gwnw" path="res://common/fonts/Kurland.ttf" id="13_1xog8"]
+[ext_resource type="PackedScene" uid="uid://d4ejx402qfkwa" path="res://scenes/ui/steam_friends_list/invite_popup/invite_popup.tscn" id="13_7ewij"]
+[ext_resource type="Shader" uid="uid://bixg1gro3b067" path="res://addons/posterizer/src/posterizer_lut_canvas.gdshader" id="15_e624k"]
+[ext_resource type="ImageTexture3D" uid="uid://hsgharmxh5jo" path="res://assets/forest_LUT_64.tres" id="16_r6j1d"]
+[ext_resource type="PackedScene" uid="uid://bbvvb6ccsnea5" path="res://scenes/sprites/cow.tscn" id="17_r6j1d"]
+
+[sub_resource type="GDScript" id="GDScript_7ewij"]
+resource_name = "in_game_ui_script"
+script/source = "extends Control
+
+func _process(_delta: float) -> void: if visible and Input.mouse_mode != Input.MOUSE_MODE_VISIBLE: visible = false
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o4rj1"]
+shader = ExtResource("15_e624k")
+shader_parameter/palette_lut = ExtResource("16_r6j1d")
+
+[node name="Lobby" type="Node2D" unique_id=965971929 node_paths=PackedStringArray("multiplayer_spawner", "players_container")]
+script = ExtResource("1_1ig7j")
+player_scene = ExtResource("2_jekxk")
+multiplayer_spawner = NodePath("MultiplayerSpawner")
+players_container = NodePath("")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=573657656]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=883366865]
+
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1670706487]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InGameUI" type="Control" parent="CanvasLayer/UI" unique_id=334839678]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = SubResource("GDScript_7ewij")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/UI/InGameUI" unique_id=1092246775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SteamFriendsList" parent="CanvasLayer/UI/InGameUI/Panel" unique_id=785300720 instance=ExtResource("12_a0ps3")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 637.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/InGameUI/Panel" unique_id=992869685]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -651.0
+offset_bottom = 544.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/InGameUI/Panel/MarginContainer" unique_id=246825406]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 32
+
+[node name="ExitLobbyButton" type="Button" parent="CanvasLayer/UI/InGameUI/Panel/MarginContainer/VBoxContainer" unique_id=1835734236]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("11_sekq8")
+theme_override_colors/font_pressed_color = Color(1, 0.5492647, 0.545648, 1)
+theme_override_colors/font_hover_color = Color(0.9999867, 0.31112897, 0.35298774, 1)
+theme_override_constants/outline_size = 16
+text = "EXIT LOBBY"
+
+[node name="LobbyInfoButton" type="Button" parent="CanvasLayer/UI/InGameUI/Panel/MarginContainer/VBoxContainer" unique_id=902977002]
+unique_name_in_owner = true
+show_behind_parent = true
+custom_minimum_size = Vector2(347, 126)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("11_sekq8")
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 28
+text = "IP/Lobby ID: 
+xxx.x.x.x"
+
+[node name="LobbyInfoCopyLabel" type="Label" parent="CanvasLayer/UI/InGameUI/Panel/MarginContainer/VBoxContainer/LobbyInfoButton" unique_id=237484094]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -17.0
+offset_right = 85.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_vertical = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource("11_sekq8")
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("13_1xog8")
+theme_override_font_sizes/font_size = 32
+text = "COPIED!"
+horizontal_alignment = 1
+
+[node name="MainMenuUI" parent="CanvasLayer/UI" unique_id=1236732426 instance=ExtResource("2_ukx7c")]
+unique_name_in_owner = true
+layout_mode = 1
+mouse_filter = 2
+
+[node name="InvitePopup" parent="CanvasLayer/UI" unique_id=485546617 instance=ExtResource("13_7ewij")]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -424.0
+offset_top = 54.0
+offset_right = 424.0
+offset_bottom = 150.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=915445931]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=1968306332]
+material = SubResource("ShaderMaterial_o4rj1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Cow" parent="CanvasLayer2" unique_id=2078738616 instance=ExtResource("17_r6j1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57993793, 1.6008906, 3.2461786)
+
+[connection signal="pressed" from="CanvasLayer/UI/InGameUI/Panel/MarginContainer/VBoxContainer/ExitLobbyButton" to="." method="_on_exit_lobby_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/InGameUI/Panel/MarginContainer/VBoxContainer/LobbyInfoButton" to="." method="_on_lobby_info_button_pressed"]

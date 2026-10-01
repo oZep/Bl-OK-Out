@@ -1,0 +1,31 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+export_presets.cfg
+# Other ignores
+/local/*
+export_presets.cfg
+
+# Created by https://gitignore.org
+# Godot.gitignore
+
+# Godot 4.2+ specific ignores
+~*.dll
+
+# Godot 4+ specific ignores
+.godot/
+.nomedia
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
