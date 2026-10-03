@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dx4y5fqwj1u30"]
 
 [ext_resource type="Script" uid="uid://b4cbqu3mlh15u" path="res://scenes/lobby/lobby.gd" id="1_1ig7j"]
-[ext_resource type="PackedScene" uid="uid://bwggrf7sbmkcv" path="res://scenes/player_character/player_character_scene.tscn" id="2_jekxk"]
 [ext_resource type="PackedScene" uid="uid://debd8dnm3d5ik" path="res://scenes/lobby/main_menu_ui.tscn" id="2_ukx7c"]
 [ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://common/themes/main_theme/main_theme.tres" id="11_sekq8"]
 [ext_resource type="PackedScene" uid="uid://da2jeeyxxp2s2" path="res://scenes/ui/steam_friends_list/steam_friends_list.tscn" id="12_a0ps3"]
@@ -22,13 +21,8 @@ func _process(_delta: float) -> void: if visible and Input.mouse_mode != Input.M
 shader = ExtResource("15_e624k")
 shader_parameter/palette_lut = ExtResource("16_r6j1d")
 
-[node name="Lobby" type="Node2D" unique_id=965971929 node_paths=PackedStringArray("multiplayer_spawner", "players_container")]
+[node name="Lobby" type="Node2D" unique_id=965971929]
 script = ExtResource("1_1ig7j")
-player_scene = ExtResource("2_jekxk")
-multiplayer_spawner = NodePath("MultiplayerSpawner")
-players_container = NodePath("")
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=573657656]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=883366865]
 

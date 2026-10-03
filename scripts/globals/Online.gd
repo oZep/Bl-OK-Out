@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_PLAYERS: int = 12
+const MAX_PLAYERS: int = 2 # snake game = 2 players (Steam lobby size; ENet gets MAX_PLAYERS - 1 clients)
 
 enum ErrorCodes { NO_RESPONSE, SUCCESS, FAILED, CURRENTLY_BUSY, JOIN_FAILED_SAME_OWNER_ID, STEAM_CONNECTION_ERROR }
 
@@ -37,10 +37,13 @@ func _process(_delta: float) -> void: _process_steam_p2p_packets()
 func leave_lobby() -> void:
 	is_host = false
 	if not steam_lobby_id and not multiplayer.has_multiplayer_peer(): return
-	Steam.leaveLobby(steam_lobby_id)
+	var me := personal_player_data # grab before the peer is closed
+	if steam_lobby_id: Steam.leaveLobby(steam_lobby_id)
 	if multiplayer.multiplayer_peer: multiplayer.multiplayer_peer.close()
+	multiplayer.multiplayer_peer = null
 	steam_lobby_id = 0
-	player_disconnected.emit(personal_player_data)
+	players.clear() # otherwise re-hosting ignores you ("already registered")
+	player_disconnected.emit(me)
 
 func join_address(address: String, port: int = LOCAL_SERVER_PORT) -> ErrorCodes:
 	if is_busy: return ErrorCodes.CURRENTLY_BUSY
@@ -128,8 +131,6 @@ func _setup_steam_multiplayer() -> void:
 	Steam.lobby_created.connect(_on_steam_lobby_created)
 	Steam.lobby_joined.connect(_on_steam_lobby_join_response)
 	Steam.join_requested.connect(_on_steam_join_requested)
-	
-	multiplayer.connected_to_server.connect(_on_connected_to_server)
 
 func _on_steam_lobby_created(connection_response: int, lobby_id: int) -> void:
 	match connection_response:
@@ -228,7 +229,7 @@ func host_local_lobby() -> ErrorCodes:
 	is_host = true
 	
 	var new_peer := ENetMultiplayerPeer.new()
-	var error := new_peer.create_server(LOCAL_SERVER_PORT, MAX_PLAYERS)
+	var error := new_peer.create_server(LOCAL_SERVER_PORT, MAX_PLAYERS - 1)
 	match error:
 		OK:
 			multiplayer.multiplayer_peer = new_peer
@@ -237,6 +238,7 @@ func host_local_lobby() -> ErrorCodes:
 			return ErrorCodes.SUCCESS
 		_:
 			is_host = false
+			is_busy = false
 			return ErrorCodes.FAILED
 
 func join_local_lobby() -> ErrorCodes:
