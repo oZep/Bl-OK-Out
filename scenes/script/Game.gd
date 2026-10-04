@@ -32,7 +32,7 @@ enum Sabotage { REVEAL, INVERT, SPEED }
 @export var cell_size: int = 96
 @export var win_score: int = 16
 @export var countdown_seconds: int = 3
-@export var round_seconds: float = 40.0
+@export var round_seconds: float = 15.0
 @export var step_interval: float = 0.35     # seconds per move
 @export var boost_interval: float = 0.18    # seconds per move while boosted
 @export var effect_seconds: float = 15.0    # how long invert / speed last

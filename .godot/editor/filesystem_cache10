@@ -1,5 +1,5 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1791057693
+::res://::1791157266
 icon.png::CompressedTexture2D::4986494278206365671::1781831845::1781831895::1::::<><><>0<>0<>e1a0035ed36c784763844620ca7a27e5<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.ctex::
 README.md::TextFile::-1::1781831845::0::1::::<><><>0<>0<><>::
 ::res://addons/::1790892439
@@ -13,11 +13,11 @@ readme.md::TextFile::-1::1781831845::0::1::::<><><>0<>0<><>::
 ::res://addons/godotsteam/linuxarm64/::1790892159
 ::res://addons/godotsteam/osx/::1790892159
 ::res://addons/godotsteam/win32/::1790892159
-::res://addons/godotsteam/win64/::1791057690
+::res://addons/godotsteam/win64/::1791157263
 ::res://addons/posterizer/::1790892159
 plugin.cfg::TextFile::-1::1781832514::0::1::::<><><>0<>0<><>::
 posterizer.gdextension::GDExtension::147568034992678309::1781832514::0::1::::<><><>0<>0<><>::
-::res://addons/posterizer/bin/::1791057691
+::res://addons/posterizer/bin/::1791157264
 ::res://addons/posterizer/bin/libgdposterizelutgenerator.macos.template_release.framework/::1790892159
 ::res://addons/posterizer/src/::1790892159
 lut_generator.gd::GDScript::3855823435120264485::1781832514::0::1::::PosterizerLUTGeneratorGDScript<>RefCounted<><>0<>0<><>::
