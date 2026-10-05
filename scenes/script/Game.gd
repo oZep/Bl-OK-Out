@@ -36,7 +36,7 @@ enum Sabotage { REVEAL, INVERT, SPEED }
 @export var step_interval: float = 0.35     # seconds per move
 @export var boost_interval: float = 0.18    # seconds per move while boosted
 @export var effect_seconds: float = 15.0    # how long invert / speed last
-@export var start_growth: int = 2           # snake starts at length 1 and grows to 1 + this
+@export var start_growth: int = 0           # snake starts at length 1 and grows to 1 + this
 @export var allow_offline_test: bool = true # run as local 2-player when there is no session
 @export var p1_texture: Texture2D           # square picture for player 1's snake
 @export var p2_texture: Texture2D           # square picture for player 2's snake
@@ -447,7 +447,7 @@ func _move_snake(s) -> void:
 
 
 func _reset_snake(s) -> void:
-	s.reset(start_growth)   # keeps score, goes back to its starting corner
+	s.reset(s.score)   # keeps score, goes back to its starting corner
 	player_reset.emit(s.id)
 
 
