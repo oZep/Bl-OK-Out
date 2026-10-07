@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://common/themes/main_theme/main_theme.tres" id="1_fvh1d"]
 [ext_resource type="Script" uid="uid://wfj6b11wkwx2" path="res://scenes/lobby/main_menu_ui.gd" id="2_script"]
 [ext_resource type="Theme" uid="uid://bfckssd5ut30u" path="res://common/themes/UI_themes/menu_button.tres" id="3_f6dss"]
+[ext_resource type="Texture2D" uid="uid://b678r7j7demo1" path="res://assets/Sprite-blok-out_menu_title.png" id="4_w7cn3"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_npnbc"]
 color = Color(0, 0, 0, 0)
@@ -59,13 +60,9 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=906079098]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 0
-theme = ExtResource("3_f6dss")
-theme_override_font_sizes/font_size = 140
-text = "🐍 Block-OUT"
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1971462731]
+position = Vector2(468, 73)
+texture = ExtResource("4_w7cn3")
 
 [node name="MainContainer" type="VBoxContainer" parent="MarginContainer" unique_id=952908122]
 layout_mode = 2
