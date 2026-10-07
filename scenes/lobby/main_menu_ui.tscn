@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://cfsikuv13gwnw" path="res://common/fonts/Kurland.ttf" id="1_font"]
 [ext_resource type="Theme" uid="uid://b3klx57slj0l3" path="res://common/themes/main_theme/main_theme.tres" id="1_fvh1d"]
 [ext_resource type="Script" uid="uid://wfj6b11wkwx2" path="res://scenes/lobby/main_menu_ui.gd" id="2_script"]
+[ext_resource type="Theme" uid="uid://bfckssd5ut30u" path="res://common/themes/UI_themes/menu_button.tres" id="3_f6dss"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_npnbc"]
 color = Color(0, 0, 0, 0)
@@ -34,6 +35,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
@@ -60,6 +63,7 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 0
+theme = ExtResource("3_f6dss")
 theme_override_font_sizes/font_size = 140
 text = "🐍 Block-OUT"
 
@@ -112,11 +116,12 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="HostOnline" type="Button" parent="MarginContainer/MainContainer/MainMenu/HostButtons/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1168367450]
+texture_filter = 1
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme = ExtResource("1_fvh1d")
-text = "Create Server"
+theme = ExtResource("3_f6dss")
+text = "CREATE SERVER"
 
 [node name="Buttons3" type="HBoxContainer" parent="MarginContainer/MainContainer/MainMenu/HostButtons/VBoxContainer" unique_id=537154579]
 layout_mode = 2
@@ -135,8 +140,8 @@ theme_override_constants/margin_bottom = 8
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme = ExtResource("1_fvh1d")
-text = "Join Server"
+theme = ExtResource("3_f6dss")
+text = "JOIN SERVER"
 
 [node name="Buttons4" type="HBoxContainer" parent="MarginContainer/MainContainer/MainMenu/HostButtons/VBoxContainer" unique_id=1975827792]
 layout_mode = 2
@@ -155,8 +160,8 @@ theme_override_constants/margin_bottom = 8
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme = ExtResource("1_fvh1d")
-text = "Play offline"
+theme = ExtResource("3_f6dss")
+text = "PLAY OFFLINE"
 
 [node name="QuitOption" type="HBoxContainer" parent="MarginContainer/MainContainer/MainMenu/HostButtons/VBoxContainer" unique_id=1394832730]
 layout_mode = 2
@@ -175,9 +180,10 @@ theme_override_constants/margin_bottom = 8
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme = ExtResource("3_f6dss")
 theme_override_colors/font_pressed_color = Color(0.858824, 0, 0, 0.862745)
 theme_override_colors/font_hover_color = Color(0.858807, 4.71681e-06, 1.15514e-06, 0.862745)
-text = "QUIT game"
+text = "QUIT GAME"
 
 [node name="JoinServcontainer" type="MarginContainer" parent="MarginContainer" unique_id=1294742290]
 layout_mode = 2
