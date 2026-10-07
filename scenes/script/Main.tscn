@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://dkf0nlhp8jtk0"]
 
 [ext_resource type="Script" uid="uid://epvbh07vamxq" path="res://scenes/script/Game.gd" id="1_game"]
+[ext_resource type="Texture2D" uid="uid://deita07jdo06c" path="res://assets/player_piece.png" id="2_u5cfg"]
+[ext_resource type="Texture2D" uid="uid://dwo0lhe87ac75" path="res://assets/player_piece_2.png" id="3_n7bna"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1058797935]
 script = ExtResource("1_game")
+p1_texture = ExtResource("2_u5cfg")
+p2_texture = ExtResource("3_n7bna")
