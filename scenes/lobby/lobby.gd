@@ -69,7 +69,11 @@ func _on_host_online_requested() -> void:
 	toggle_ui(true, true)
 	var error: Online.ErrorCodes = await Online.host_steam_lobby()
 	match error:
-		Online.ErrorCodes.SUCCESS: _enter_game()
+		Online.ErrorCodes.SUCCESS:
+			_update_lobby_info_button()
+			DisplayServer.clipboard_set(_current_lobby)
+			_show_copied_popup()
+			_enter_game()
 		_: toggle_ui(true)
 
 func _on_join_requested(address: String) -> void:
